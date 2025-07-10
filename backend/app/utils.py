@@ -33,14 +33,13 @@ def select_team(products: List[Product], budget: float) -> List[Product]:
         budget (float): The maximum total price for the team.
 
     Returns:
-        List[Product]: A team of 5 products, each from a unique category.
+        Tuple(List[Product], float): A team of 5 products, each from a unique category and total price.
     """
 
     # Group all eligible products by category (only rating >= 4.0)
     category_map = defaultdict(list)
     for p in products:
-        if p.rating >= 4.0:
-            category_map[p.category].append(p)
+        category_map[p.category].append(p)
 
     # For each category, keep only the top 3 highest-value products
     # to reduce memory usage and computation time
@@ -74,4 +73,4 @@ def select_team(products: List[Product], budget: float) -> List[Product]:
                 best_score = total_score
                 best_team = team  # store best team found so far
 
-    return list(best_team)
+    return list(best_team), sum(i.price for i in best_team)

@@ -13,6 +13,7 @@ type Product = {
 export default function Page() {
   const [budget, setBudget] = useState<number>(0)
   const [products, setProducts] = useState<Product[]>([])
+  const [totalCost, setTotalCost] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<'rating' | 'price' | ''>('')
@@ -34,6 +35,7 @@ export default function Page() {
         throw new Error(data.detail || "Something went wrong")
       }
       setProducts(data.products)
+      setTotalCost(data.total_cost)
     } catch (err: any) {
       setProducts([])
       setError(err.message)
@@ -96,9 +98,7 @@ export default function Page() {
             </tbody>
           </table>
 
-          <p style={{ marginTop: 12, fontWeight: 'bold' }}>
-            Total Cost: ${products.reduce((sum, p) => sum + p.price, 0).toFixed(2)}
-          </p>
+          <p>Total Cost: ${totalCost.toFixed(2)}</p>
         </>
       )}
     </div>

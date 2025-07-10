@@ -38,7 +38,7 @@ def team_builder(
     Returns:
         ProductResponse: JSON payload with selected team.
     """
-    team = select_team(products, budget)
+    team, total_cost = select_team(products, budget)
     if len(team) < 5:
         raise HTTPException(status_code=400, detail="Not enough diverse products in budget")
-    return {"products": team}
+    return ProductResponse(products=team, total_cost=round(total_cost, 2))

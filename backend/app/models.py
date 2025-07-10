@@ -13,5 +13,7 @@ class Product(BaseModel):
 
 
 class ProductResponse(BaseModel):
-    """Response schema containing selected team."""
+    """Response schema containing selected team and total cost."""
     products: List[Product]
+    total_cost: float
+
