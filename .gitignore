@@ -1,0 +1,40 @@
+# === General ===
+.DS_Store
+Thumbs.db
+*.log
+
+# === Python / FastAPI (backend) ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+*.db
+.coverage
+htmlcov/
+.pytest_cache/
+
+# === Node / Next.js (frontend) ===
+node_modules/
+.next/
+out/
+.env.local
+.env.development
+.env.production
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log
+
+# === Docker ===
+*.pid
+*.sock
+
+# === VSCode / IDEs ===
+.vscode/
+.idea/
+*.swp
+
+# === Docker cache or temp files ===
+docker-compose.override.yml
