@@ -1,9 +1,10 @@
 import json
 import os
-from typing import List
-from .models import Product
 from collections import defaultdict
 from itertools import combinations, product
+from typing import List
+
+from .models import Product
 
 
 def load_products(path: str = None) -> List[Product]:
@@ -19,7 +20,6 @@ def load_products(path: str = None) -> List[Product]:
         data = json.load(f)
 
     return [Product(**item) for item in data]
-
 
 
 def select_team(products: List[Product], budget: float) -> List[Product]:

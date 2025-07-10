@@ -1,11 +1,12 @@
+from typing import List
+
 from fastapi import FastAPI, HTTPException, Query, Depends
+from fastapi.middleware.cors import CORSMiddleware
+
+from .deps import get_products
+from .models import Product
 from .models import ProductResponse
 from .utils import load_products, select_team
-from .deps import get_products
-from typing import List
-from .models import Product
-
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 

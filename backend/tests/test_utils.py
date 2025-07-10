@@ -1,4 +1,5 @@
 import pytest
+
 from backend.app.models import Product
 from backend.app.utils import select_team
 
@@ -12,27 +13,20 @@ mock_products = [
     Product(id=6, name="F", category="Cat1", price=55, rating=4.3),  # Duplicate category
 ]
 
+
 def test_select_team_returns_five_unique_categories():
     team = select_team(mock_products, budget=300)
     assert len(team) == 5, "Team should have 5 products"
     assert len(set(p.category for p in team)) == 5, "Each product should have a unique category"
+
 
 def test_select_team_respects_budget():
     team = select_team(mock_products, budget=250)
     total_price = sum(p.price for p in team)
     assert total_price <= 250, f"Total price {total_price} should be under budget"
 
+
 def test_select_team_empty_if_budget_too_low():
     team = select_team(mock_products, budget=50)
     assert isinstance(team, list), "Should return a list"
     assert len(team) < 5, "Should return less than 5 if budget is insufficient"
-
-# from backend.app.utils import select_team, load_products
-#
-#
-# def test_team_selection():
-#     products = load_products()
-#     team = select_team(products, 500)
-#     assert len(team) == 5
-#     assert len(set(p.category for p in team)) == 5
-#     assert sum(p.price for p in team) <= 500

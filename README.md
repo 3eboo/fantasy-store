@@ -1,6 +1,7 @@
 # 🛒 Fantasy Store Team Builder
 
-A minimal full-stack web application that helps users assemble the **best value product team** from a fictional fantasy store — within a given budget.
+A minimal full-stack web application that helps users assemble the **best value product team** from a fictional fantasy
+store — within a given budget.
 
 ---
 
@@ -26,19 +27,23 @@ The backend selects a team of 5 products by:
 score = (sum of rating^1.8) * 0.9 + (budget utilization ratio) * 0.1
 ```
 
-
 ## 🧪 Running Instructions
+
 ### 📦 Prerequisites
+
 - Docker installed and running
 - Clone the Project
+
 ```commandline
 git clone https://github.com/your-username/fantasy-store-team-builder.git
 ```
 
 ▶️ Run the App, at the project root, simply run:
+
 ```
 docker-compose up --build
 ```
+
 🌐 Access the Application
 Frontend: http://localhost:3000
 
