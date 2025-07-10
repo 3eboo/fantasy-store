@@ -20,6 +20,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 def load_product_data():
+    """Initialize product data from file and store in app state."""
     app.state.products = load_products()
 
 
@@ -28,6 +29,14 @@ def team_builder(
         budget: float = Query(..., gt=0),
         products: List[Product] = Depends(get_products),
 ):
+    """GET endpoint to return a value-optimized team of products within a budget.
+
+    Args:
+        budget (float): User-supplied budget to optimize within.
+
+    Returns:
+        ProductResponse: JSON payload with selected team.
+    """
     team = select_team(products, budget)
     if len(team) < 5:
         raise HTTPException(status_code=400, detail="Not enough diverse products in budget")

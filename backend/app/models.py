@@ -3,6 +3,7 @@ from typing import List
 
 
 class Product(BaseModel):
+    """Schema representing a product item."""
     id: int
     name: str
     category: str
@@ -11,4 +12,5 @@ class Product(BaseModel):
 
 
 class ProductResponse(BaseModel):
+    """Response schema containing selected team."""
     products: List[Product]

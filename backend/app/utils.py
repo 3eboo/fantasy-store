@@ -6,8 +6,8 @@ from collections import defaultdict
 from itertools import combinations, product
 
 
-
 def load_products(path: str = None) -> List[Product]:
+    """Load products from a JSON file and validate against the Product model."""
     if path is None:
         base_dir = os.path.dirname(__file__)
         path = os.path.join(base_dir, "data.json")
