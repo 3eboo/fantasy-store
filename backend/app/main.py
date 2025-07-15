@@ -29,7 +29,7 @@ def load_product_data():
 def team_builder(
         budget: float = Query(..., gt=0),
         products: List[Product] = Depends(get_products),
-):
+) -> ProductResponse:
     """GET endpoint to return a value-optimized team of products within a budget.
 
     Args:
@@ -38,7 +38,8 @@ def team_builder(
     Returns:
         ProductResponse: JSON payload with selected team.
     """
-    team, total_cost = select_team(products, budget)
+    team = select_team(products, budget)
     if len(team) < 5:
         raise HTTPException(status_code=400, detail="Not enough diverse products in budget")
-    return ProductResponse(products=team, total_cost=round(total_cost, 2))
+    total_cost = round(sum(p.price for p in team), 2)
+    return ProductResponse(products=team, total_cost=total_cost)
