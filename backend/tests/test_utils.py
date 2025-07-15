@@ -1,5 +1,3 @@
-import pytest
-
 from backend.app.models import Product
 from backend.app.utils import select_team
 
