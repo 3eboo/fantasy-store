@@ -23,10 +23,16 @@ def load_products(path: str = None) -> List[Product]:
 
 
 def select_team(products: List[Product], budget: float) -> List[Product]:
-    """Return the best combination of products within ``budget``.
+    """
+    Build an optimal mix of five products, one from each category, while
+    staying under the given budget. Scoring favors higher-rated items and
+    slightly rewards fuller budget usage.
+    Args:
+        products (List[Product]): A list of available product entries.
+        budget (float): The maximum total price for the team.
 
-    The algorithm selects 5 products from distinct categories using a weighted
-    score based on rating and budget utilisation.
+    Returns:
+        List[Product]
     """
 
     # Group all eligible products by category (only rating >= 4.0)

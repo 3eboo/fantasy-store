@@ -29,7 +29,7 @@ def load_product_data():
 def team_builder(
         budget: float = Query(..., gt=0),
         products: List[Product] = Depends(get_products),
-):
+) -> ProductResponse:
     """GET endpoint to return a value-optimized team of products within a budget.
 
     Args:
