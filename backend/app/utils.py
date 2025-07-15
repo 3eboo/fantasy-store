@@ -24,16 +24,16 @@ def load_products(path: str = None) -> List[Product]:
 
 def select_team(products: List[Product], budget: float) -> List[Product]:
     """
-    Selects a team of 5 products from distinct categories that maximizes overall value
-    while staying within a given budget. The algorithm balances product rating and
-    total budget utilization to encourage thoughtful, cost-effective selection.
+    Build an optimal mix of five products, one from each category, while
+    staying under the given budget. Scoring favors higher-rated items and
+    slightly rewards fuller budget usage.
 
     Args:
         products (List[Product]): A list of available product entries.
         budget (float): The maximum total price for the team.
 
     Returns:
-        Tuple(List[Product], float): A team of 5 products, each from a unique category and total price.
+        Tuple(List[Product], float): The selected products and their total cost.
     """
 
     # Group all eligible products by category (only rating >= 4.0)
